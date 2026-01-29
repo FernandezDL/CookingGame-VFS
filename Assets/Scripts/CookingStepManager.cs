@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,8 +20,13 @@ public class CookingStepManager : MonoBehaviour
 
     [Header("Input")]
     public CookingInputController input;
-    
-    [Header("UI")]
+
+    [Header("UI")] 
+    [SerializeField] private TMP_Text guideText;
+    [SerializeField] private string stirGuideText;
+    [SerializeField] private string cutGuideText;
+    [SerializeField] private string winText;
+    [Header("Progress Bars")]
     [SerializeField] private ProgressBarStirMechanic progressBarStir;
     [SerializeField] private ProgressBarCutMechanic progressBarCut;
     
@@ -76,6 +82,10 @@ public class CookingStepManager : MonoBehaviour
         stirMechanic.ResetMechanic();
         Debug.Log("🌀 Start Stirring");
         
+        // UI
+        guideText.text = stirGuideText;
+        
+        // Feedback
         progressBarStir.gameObject.SetActive(true);
         foreach (var ingredient in ingredients)
         {
@@ -89,6 +99,10 @@ public class CookingStepManager : MonoBehaviour
         cutMechanic.ResetMechanic();
         Debug.Log("🔪 Start Cutting");
         
+        // Ui
+        guideText.text = cutGuideText;
+        
+        // Feedback
         progressBarStir.gameObject.SetActive(false);
         progressBarCut.gameObject.SetActive(true);
     }
@@ -98,6 +112,10 @@ public class CookingStepManager : MonoBehaviour
         currentStep = CookingStep.Done;
         Debug.Log("🎉 Cooking Completed!");
         
+        // UI
+        guideText.text = winText;
+
+        // Feedback
         progressBarCut.gameObject.SetActive(false);
 
         foreach (var ingredient in ingredients)
