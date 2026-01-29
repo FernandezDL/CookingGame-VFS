@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 2464886232455138919}
   - component: {fileID: 3176352997253187532}
   m_Layer: 5
-  m_Name: Recipe 1
+  m_Name: Spice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
