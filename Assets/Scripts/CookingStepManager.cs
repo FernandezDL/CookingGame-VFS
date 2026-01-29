@@ -20,12 +20,14 @@ public class CookingStepManager : MonoBehaviour
 
     [Header("Input")]
     public CookingInputController input;
+    [SerializeField] private GameObject endgameButton;
 
     [Header("UI")] 
     [SerializeField] private TMP_Text guideText;
     [SerializeField] private string stirGuideText;
     [SerializeField] private string cutGuideText;
     [SerializeField] private string winText;
+    
     [Header("Progress Bars")]
     [SerializeField] private ProgressBarStirMechanic progressBarStir;
     [SerializeField] private ProgressBarCutMechanic progressBarCut;
@@ -80,7 +82,6 @@ public class CookingStepManager : MonoBehaviour
     {
         currentStep = CookingStep.Stir;
         stirMechanic.ResetMechanic();
-        Debug.Log("🌀 Start Stirring");
         
         // UI
         guideText.text = stirGuideText;
@@ -97,7 +98,6 @@ public class CookingStepManager : MonoBehaviour
     {
         currentStep = CookingStep.Cut;
         cutMechanic.ResetMechanic();
-        Debug.Log("🔪 Start Cutting");
         
         // Ui
         guideText.text = cutGuideText;
@@ -110,7 +110,6 @@ public class CookingStepManager : MonoBehaviour
     private void FinishCooking()
     {
         currentStep = CookingStep.Done;
-        Debug.Log("🎉 Cooking Completed!");
         
         // UI
         guideText.text = winText;
@@ -123,5 +122,7 @@ public class CookingStepManager : MonoBehaviour
             ingredient.SetActive(false);
         }
         result.SetActive(true);
+        
+        endgameButton.gameObject.SetActive(true);
     }
 }
