@@ -44,7 +44,6 @@ public class StirMechanic : MonoBehaviour
         if (Mathf.Abs(accumulatedRotation) >= requiredRotation)
         {
             completed = true;
-            Debug.Log("✅ Stir completed!");
         }
     }
 

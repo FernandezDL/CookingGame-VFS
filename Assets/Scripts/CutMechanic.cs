@@ -38,12 +38,9 @@ public class CutMechanic : MonoBehaviour
         if (IsValidCutSwipe(swipe))
         {
             currentCuts++;
-            Debug.Log($"🔪 Cut {currentCuts}/{requiredCuts}");
-
             if (currentCuts >= requiredCuts)
             {
                 completed = true;
-                Debug.Log("✅ Cutting completed!");
             }
         }
 
